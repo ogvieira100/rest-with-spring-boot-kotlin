@@ -18,9 +18,39 @@ class GreetingController {
         return  Greeting(counter.incrementAndGet(),"Hello Kotlin $name!");
     }
 
+    @RequestMapping("/subtract/{numberOne}/{numberTwo}")
+    fun subtract(@PathVariable(value="numberOne") numberOne: String?
+                ,@PathVariable(value="numberTwo") numberTwo: String?):Double
+    {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo) )
+            throw  UnsupportedMathOperationException("Por favor set um valor numérico");
+
+        return  convertDouble(numberOne) - convertDouble(numberTwo) ;
+    }
+
+    @RequestMapping("/multiple/{numberOne}/{numberTwo}")
+    fun multiple(@PathVariable(value="numberOne") numberOne: String?
+                 ,@PathVariable(value="numberTwo") numberTwo: String?):Double
+    {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo) )
+            throw  UnsupportedMathOperationException("Por favor set um valor numérico");
+
+        return  convertDouble(numberOne) * convertDouble(numberTwo) ;
+    }
+
+    @RequestMapping("/division/{numberOne}/{numberTwo}")
+    fun division(@PathVariable(value="numberOne") numberOne: String?
+                 ,@PathVariable(value="numberTwo") numberTwo: String?):Double
+    {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo) )
+            throw  UnsupportedMathOperationException("Por favor set um valor numérico");
+
+        return  convertDouble(numberOne) / convertDouble(numberTwo) ;
+    }
+
 
     @RequestMapping(value=["/sum/{numberOne}/{numberTwo}"])
-    fun sum(@PathVariable(value="numberOne") numberOne: String?
+    fun sum( @PathVariable(value="numberOne") numberOne: String?
             ,@PathVariable(value="numberTwo") numberTwo: String?
     ):Double
     {
