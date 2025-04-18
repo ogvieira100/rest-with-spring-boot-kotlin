@@ -29,9 +29,15 @@
 	<properties>
 		<java.version>21</java.version>
 		<kotlin.version>1.9.25</kotlin.version>
+		<dozer.version>7.0.0</dozer.version>
 		<spring-ai.version>1.0.0-M6</spring-ai.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.github.dozermapper</groupId>
+			<artifactId>dozer-core</artifactId>
+			<version>${dozer.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

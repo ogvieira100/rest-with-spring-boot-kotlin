@@ -1,6 +1,7 @@
 package br.com.ogvieira.first.controller
 
 
+import br.com.ogvieira.first.data.vo.v1.PersonVO
 import br.com.ogvieira.first.model.Person
 import br.com.ogvieira.first.services.PersonService
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,27 +23,27 @@ class PersonController {
 
     @RequestMapping(method = [RequestMethod.GET],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun findAll(): List<Person> {
+    fun findAll(): List<PersonVO> {
         return service.findAll()
     }
 
     @RequestMapping(value = ["/{id}"], method = [RequestMethod.GET],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun findById(@PathVariable(value="id") id: Long): Person {
+    fun findById(@PathVariable(value="id") id: Long): PersonVO {
         return service.findById(id)
     }
 
     @RequestMapping(method = [RequestMethod.POST],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun create(@RequestBody person: Person): Person {
+    fun create(@RequestBody person: PersonVO): PersonVO {
         return service.create(person)
     }
 
     @RequestMapping(method = [RequestMethod.PUT],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun update(@RequestBody person: Person): Person {
+    fun update(@RequestBody person: PersonVO): PersonVO {
         return service.update(person)
     }
 
@@ -51,7 +52,5 @@ class PersonController {
     fun delete(@PathVariable(value="id") id: Long) {
         service.delete(id)
     }
-
-
 
 }
