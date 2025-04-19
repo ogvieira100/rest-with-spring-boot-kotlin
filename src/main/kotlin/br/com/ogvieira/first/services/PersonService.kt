@@ -36,7 +36,7 @@ class PersonService {
         return DozerMapper.parseObject(person, PersonVO::class.java)
     }
 
-    fun create(person: PersonVO) : PersonVO{
+    fun createV1(person: PersonVO) : PersonVO{
 
         logger.info("Creating one person with name ${person.firstName}!")
         var entity: Person = DozerMapper.parseObject(person, Person::class.java)

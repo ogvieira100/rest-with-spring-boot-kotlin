@@ -1,7 +1,7 @@
 package br.com.ogvieira.first.controller
 
 
-import br.com.ogvieira.first.data.vo.v1.PersonVO
+import br.com.ogvieira.first.data.vo.v1.PersonVO as PersonVOv1
 import br.com.ogvieira.first.data.vo.v2.PersonVO as PersonVOv2
 import br.com.ogvieira.first.model.Person
 import br.com.ogvieira.first.services.PersonService
@@ -24,21 +24,21 @@ class PersonController {
 
     @RequestMapping(method = [RequestMethod.GET],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun findAll(): List<PersonVO> {
+    fun findAll(): List<PersonVOv1> {
         return service.findAll()
     }
 
     @RequestMapping(value = ["/{id}"], method = [RequestMethod.GET],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun findById(@PathVariable(value="id") id: Long): PersonVO {
+    fun findById(@PathVariable(value="id") id: Long): PersonVOv1 {
         return service.findById(id)
     }
 
     @RequestMapping(method = [RequestMethod.POST],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun create(@RequestBody person: PersonVO): PersonVO {
-        return service.create(person)
+    fun create(@RequestBody person: PersonVOv1): PersonVOv1 {
+        return service.createV1(person)
     }
 
     @RequestMapping("/v2",method = [RequestMethod.POST],
@@ -51,7 +51,7 @@ class PersonController {
     @RequestMapping(method = [RequestMethod.PUT],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun update(@RequestBody person: PersonVO): PersonVO {
+    fun update(@RequestBody person: PersonVOv1): PersonVOv1 {
         return service.update(person)
     }
 
