@@ -134,6 +134,28 @@
 		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 		<plugins>
+		<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<configuration>
+					<url>jdbc:mysql://localhost:3307/java_spring?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
+					<user>root</user>
+					<password>123456</password>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>8.0.33</version>
+						<exclusions>
+							<exclusion>
+								<artifactId>slf4j-api</artifactId>
+								<groupId>org.slf4j</groupId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+				</dependencies>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
