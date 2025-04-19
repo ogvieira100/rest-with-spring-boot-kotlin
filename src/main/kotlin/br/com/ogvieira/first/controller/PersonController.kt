@@ -2,6 +2,7 @@ package br.com.ogvieira.first.controller
 
 
 import br.com.ogvieira.first.data.vo.v1.PersonVO
+import br.com.ogvieira.first.data.vo.v2.PersonVO as PersonVOv2
 import br.com.ogvieira.first.model.Person
 import br.com.ogvieira.first.services.PersonService
 import org.springframework.beans.factory.annotation.Autowired
@@ -37,6 +38,13 @@ class PersonController {
         consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE])
     fun create(@RequestBody person: PersonVO): PersonVO {
+        return service.create(person)
+    }
+
+    @RequestMapping("/v2",method = [RequestMethod.POST],
+        consumes = [MediaType.APPLICATION_JSON_VALUE],
+        produces = [MediaType.APPLICATION_JSON_VALUE])
+    fun createv2(@RequestBody person: PersonVOv2): PersonVOv2 {
         return service.create(person)
     }
 

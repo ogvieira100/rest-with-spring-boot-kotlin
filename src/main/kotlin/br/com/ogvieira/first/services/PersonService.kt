@@ -3,9 +3,11 @@ package br.com.ogvieira.first.services
 import br.com.ogvieira.first.data.vo.v1.PersonVO
 import br.com.ogvieira.first.exceptions.ResourceNotFoundException
 import br.com.ogvieira.first.mapper.DozerMapper
+import br.com.ogvieira.first.mapper.custom.PersonMapper
 import br.com.ogvieira.first.model.Person
 import br.com.ogvieira.first.repository.PersonRepository
 import com.sun.source.tree.TryTree
+import org.hibernate.query.results.Builders.entity
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.concurrent.atomic.AtomicLong
@@ -60,5 +62,13 @@ class PersonService {
         val entity = repository.findById(id)
             .orElseThrow { ResourceNotFoundException("No records found for this ID!") }
         repository.delete(entity)
+    }
+
+    fun create(person: br.com.ogvieira.first.data.vo.v2.PersonVO): br.com.ogvieira.first.data.vo.v2.PersonVO {
+
+        logger.info("Creating one person with name ${person.firstName}!")
+        val personMapper =  PersonMapper()
+        var entity: Person = personMapper.mapVOToEntity(person)
+        return personMapper.mapEntityToVO(repository.save(entity))
     }
 }
