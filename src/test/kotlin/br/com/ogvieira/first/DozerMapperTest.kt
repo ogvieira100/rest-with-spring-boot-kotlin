@@ -2,7 +2,7 @@ package br.com.ogvieira.first
 
 import br.com.ogvieira.first.data.vo.v1.PersonVO
 import br.com.ogvieira.first.mapper.DozerMapper
-import br.com.ogvieira.first.model.MockPerson
+import br.com.ogvieira.first.mocks.MockPerson
 import br.com.ogvieira.first.model.Person
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
