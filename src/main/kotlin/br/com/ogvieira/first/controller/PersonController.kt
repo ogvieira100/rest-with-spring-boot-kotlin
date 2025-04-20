@@ -23,40 +23,40 @@ class PersonController {
     private lateinit var service: PersonService
 
     @RequestMapping(method = [RequestMethod.GET],
-        produces = [MediaType.APPLICATION_JSON_VALUE])
+        produces = [MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE])
     fun findAll(): List<PersonVOv1> {
         return service.findAll()
     }
 
     @RequestMapping(value = ["/{id}"], method = [RequestMethod.GET],
-        produces = [MediaType.APPLICATION_JSON_VALUE])
+        produces =  [MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE])
     fun findById(@PathVariable(value="id") id: Long): PersonVOv1 {
         return service.findById(id)
     }
 
     @RequestMapping(method = [RequestMethod.POST],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
-        produces = [MediaType.APPLICATION_JSON_VALUE])
+        produces =  [MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE])
     fun create(@RequestBody person: PersonVOv1): PersonVOv1 {
         return service.createV1(person)
     }
 
     @RequestMapping("/v2",method = [RequestMethod.POST],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
-        produces = [MediaType.APPLICATION_JSON_VALUE])
+        produces =  [MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE])
     fun createv2(@RequestBody person: PersonVOv2): PersonVOv2 {
         return service.create(person)
     }
 
     @RequestMapping(method = [RequestMethod.PUT],
         consumes = [MediaType.APPLICATION_JSON_VALUE],
-        produces = [MediaType.APPLICATION_JSON_VALUE])
+        produces =  [MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE])
     fun update(@RequestBody person: PersonVOv1): PersonVOv1 {
         return service.update(person)
     }
 
     @RequestMapping(value = ["/{id}"], method = [RequestMethod.DELETE],
-        produces = [MediaType.APPLICATION_JSON_VALUE])
+        produces =  [MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE])
     fun delete(@PathVariable(value="id") id: Long) {
         service.delete(id)
     }
