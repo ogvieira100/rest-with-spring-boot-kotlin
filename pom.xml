@@ -30,6 +30,7 @@
 		<java.version>21</java.version>
 		<kotlin.version>1.9.25</kotlin.version>
 		<dozer.version>7.0.0</dozer.version>
+		<springdoc.version>2.8.6</springdoc.version>
 		<spring-ai.version>1.0.0-M6</spring-ai.version>
 	</properties>
 	<dependencies>
@@ -128,6 +129,11 @@
 			<artifactId>jackson-dataformat-yaml</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
@@ -144,7 +150,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
 		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
 		<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
@@ -216,5 +221,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
