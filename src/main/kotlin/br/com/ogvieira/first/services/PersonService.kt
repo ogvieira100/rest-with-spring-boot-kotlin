@@ -1,6 +1,7 @@
 package br.com.ogvieira.first.services
 
 import br.com.ogvieira.first.data.vo.v1.PersonVO
+import br.com.ogvieira.first.exceptions.RequiredObjectIsNullException
 import br.com.ogvieira.first.exceptions.ResourceNotFoundException
 import br.com.ogvieira.first.mapper.DozerMapper
 import br.com.ogvieira.first.mapper.custom.PersonMapper
@@ -36,15 +37,15 @@ class PersonService {
         return DozerMapper.parseObject(person, PersonVO::class.java)
     }
 
-    fun createV1(person: PersonVO) : PersonVO{
-
+    fun createV1(person: PersonVO?) : PersonVO{
+        if (person == null) throw RequiredObjectIsNullException()
         logger.info("Creating one person with name ${person.firstName}!")
         var entity: Person = DozerMapper.parseObject(person, Person::class.java)
         return DozerMapper.parseObject(repository.save(entity), PersonVO::class.java)
     }
 
-    fun update(person: PersonVO): PersonVO {
-
+    fun update(person: PersonVO?): PersonVO {
+        if (person == null) throw RequiredObjectIsNullException()
         logger.info("Updating one person with ID ${person.id}!")
         val entity = repository.findById(person.id)
             .orElseThrow { ResourceNotFoundException("No records found for this ID!") }
@@ -64,8 +65,8 @@ class PersonService {
         repository.delete(entity)
     }
 
-    fun create(person: br.com.ogvieira.first.data.vo.v2.PersonVO): br.com.ogvieira.first.data.vo.v2.PersonVO {
-
+    fun create(person: br.com.ogvieira.first.data.vo.v2.PersonVO?): br.com.ogvieira.first.data.vo.v2.PersonVO {
+        if (person == null) throw RequiredObjectIsNullException()
         logger.info("Creating one person with name ${person.firstName}!")
         val personMapper =  PersonMapper()
         var entity: Person = personMapper.mapVOToEntity(person)

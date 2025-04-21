@@ -1,5 +1,6 @@
 package br.com.ogvieira.first
 
+import br.com.ogvieira.first.exceptions.RequiredObjectIsNullException
 import br.com.ogvieira.first.mocks.MockPerson
 import br.com.ogvieira.first.repository.PersonRepository
 import br.com.ogvieira.first.services.PersonService
@@ -133,7 +134,7 @@ internal class PersonServiceTest {
         assertEquals("Last Name Test1", result.lastName)
         assertEquals("Female", result.gender)
     }
-/*
+
     @Test
     fun createWithNullPerson() {
         val exception: Exception = assertThrows(
@@ -145,7 +146,7 @@ internal class PersonServiceTest {
         assertTrue(actualMessage!!.contains(expectedMessage))
     }
 
- */
+
 
     @Test
     fun update() {
@@ -171,7 +172,7 @@ internal class PersonServiceTest {
         assertEquals("Last Name Test1", result.lastName)
         assertEquals("Female", result.gender)
     }
-/*
+
     @Test
     fun updateWithNullPerson() {
         val exception: Exception = assertThrows(
@@ -182,7 +183,7 @@ internal class PersonServiceTest {
         val actualMessage = exception.message
         assertTrue(actualMessage!!.contains(expectedMessage))
     }
-    */
+
 
 
     @Test
