@@ -8,6 +8,7 @@ import br.com.ogvieira.first.exceptions.UnsupportedMathOperationException
 import br.com.ogvieira.first.math.SimpleMath
 import br.com.ogvieira.first.request.converters.NumberConverter
 import br.com.ogvieira.first.request.converters.NumberConverter.isNumeric
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -16,6 +17,8 @@ import java.util.concurrent.atomic.AtomicLong
 
 
 @RestController
+@RequestMapping("/api/greeting/v1")
+@Tag(name = "Greeting", description = "Endpoints for mapping filter")
 class GreetingController {
 
     val counter:AtomicLong =  AtomicLong();
