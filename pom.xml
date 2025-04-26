@@ -32,8 +32,21 @@
 		<dozer.version>7.0.0</dozer.version>
 		<springdoc.version>2.8.6</springdoc.version>
 		<spring-ai.version>1.0.0-M6</spring-ai.version>
+		<rest-assured.version>4.5.0</rest-assured.version>
+		<testcontainers.version>1.16.3</testcontainers.version>
+		<java-jwt.version>3.18.3</java-jwt.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mysql</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
@@ -41,6 +54,11 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-mysql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>${java-jwt.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
@@ -158,7 +176,7 @@
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<configuration>
-					<url>jdbc:mysql://localhost:3307/java_spring?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
+					<url>jdbc:mysql://localhost:3307/java_spring?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</url>
 					<user>root</user>
 					<password>123456</password>
 				</configuration>
