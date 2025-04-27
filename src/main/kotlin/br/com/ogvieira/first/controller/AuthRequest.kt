@@ -1,4 +1,6 @@
 package br.com.ogvieira.first.controller
 
-class AuthRequest {
-}
+data class AuthRequest(
+    val username: String,
+    val password: String
+)

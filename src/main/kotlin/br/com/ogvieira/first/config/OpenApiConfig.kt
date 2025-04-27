@@ -4,9 +4,13 @@ import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.info.License
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import io.swagger.v3.oas.models.security.SecurityRequirement
+import io.swagger.v3.oas.models.security.SecurityScheme
 
 @Configuration
 class OpenApiConfig {
+
+    val securitySchemeName = "bearerAuth"
 
     @Bean
     fun customOpenApi(): OpenAPI {
@@ -20,6 +24,19 @@ class OpenApiConfig {
                     .license(
                         License().name("Apache 2.0")
                             .url("https://github.com/ogvieira100")
+                    )
+            )   .addSecurityItem(
+                SecurityRequirement().addList(securitySchemeName)
+            )
+            .components(
+                io.swagger.v3.oas.models.Components()
+                    .addSecuritySchemes(
+                        securitySchemeName,
+                        SecurityScheme()
+                            .name(securitySchemeName)
+                            .type(SecurityScheme.Type.HTTP)
+                            .scheme("bearer")
+                            .bearerFormat("JWT")
                     )
             )
     }
