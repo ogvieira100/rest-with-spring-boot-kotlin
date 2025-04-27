@@ -17,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain
 
 
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
@@ -44,7 +45,36 @@ class SecurityConfig(
     }
 
     @Bean
-    fun authenticationManager(config: AuthenticationConfiguration): AuthenticationManager {
-        return config.authenticationManager
+    fun authenticationManager(
+        authenticationConfiguration: AuthenticationConfiguration
+    ): AuthenticationManager {
+        return authenticationConfiguration.authenticationManager
     }
+
+    /*
+    @Bean
+    fun passwordEncoder(): PasswordEncoder {
+        val encoders: MutableMap<String, PasswordEncoder> = HashMap()
+        val secret = ""
+
+        val pbkdf2Encoder = Pbkdf2PasswordEncoder(
+            secret,             // secret
+            310000,         // iterationCount
+            16,             // saltLength
+            Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA256
+        )
+
+        encoders["pbkdf2"] = pbkdf2Encoder
+
+        val passwordEncoder = DelegatingPasswordEncoder("pbkdf2", encoders)
+        passwordEncoder.setDefaultPasswordEncoderForMatches(pbkdf2Encoder)
+        return passwordEncoder
+    }
+
+ */
+    @Bean
+    fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder()
+    }
+
 }
