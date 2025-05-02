@@ -10,12 +10,14 @@ import org.springframework.hateoas.RepresentationModel
 data class PersonVO (
                     @field:JsonProperty("id")
                     var id: Long = 0,
-                    @field:JsonProperty("firstName")
-                    var firstName: String = "",
-                    @field:JsonProperty("lastName")
-                    var lastName: String = "",
+                    @field:JsonProperty("first_name")
+                    var first_name: String = "",
+                    @field:JsonProperty("last_name")
+                    var last_name: String = "",
                     @field:JsonProperty("address")
                     var address: String = "",
                     @field:JsonProperty("gender")
-                    var gender: String = ""
+                    var gender: String = "",
+                    @field:JsonProperty("enabled")
+                    var enabled: Boolean = false
                 )

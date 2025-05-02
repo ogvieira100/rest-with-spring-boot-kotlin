@@ -1,6 +1,6 @@
 package br.com.ogvieira.first.data.vo.v1
 
-class BaseRequestVO (
+open class BaseRequestPaginateVO (
         page: Int = 1,
         limit:Int = 10,
         active:Boolean = true,

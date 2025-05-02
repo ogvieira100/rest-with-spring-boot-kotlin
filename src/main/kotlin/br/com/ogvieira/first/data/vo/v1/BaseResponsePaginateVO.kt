@@ -1,6 +1,6 @@
 package br.com.ogvieira.first.data.vo.v1
 
-abstract class BaseResponseVO<T> {
+abstract class BaseResponsePaginateVO<T> {
 
     private var _items: MutableList<T> = mutableListOf()
     var items: MutableList<T>
